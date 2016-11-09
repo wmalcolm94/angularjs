@@ -11,4 +11,5 @@ angular.module('myFirstApp', [])
         return "Hello, World!";
     }; 
 });
+
 })();
