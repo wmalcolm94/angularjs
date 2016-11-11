@@ -5,24 +5,15 @@
 angular.module('DIApp', [])
 .controller('DIController', DIController);
 
-function DIController($scope, $filter, $injector) 
+DIController.$inject = ['$scope', '$filter'];
+function DIController($scope, $filter) 
 {
     $scope.name = "William";
-
-    $scope.upper = function() 
+    $scope.upper = function()
     {
         var upCase = $filter('uppercase');
         $scope.name = upCase($scope.name);
     };
-
-    console.log($injector.annotate(DIController));
 }
-
-function AnnotateMe(name, job, blah) 
-{
-    return "Blah!";
-}
-
-console.log(DIController.toString());
 
 })();
