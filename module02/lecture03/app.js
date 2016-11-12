@@ -2,63 +2,41 @@
 {
 'use strict';
 
-angular.module('MsgApp', [])
-.controller('MsgController', MsgController)
-.filter('loves', LovesFilter)
-.filter('truth', TruthFilter);
+angular.module('CounterApp', [])
+.controller('CounterController', CounterController);
 
-MsgController.$inject = ['$scope', 'lovesFilter'];
-function MsgController($scope, lovesFilter) 
+CounterController.$inject = ['$scope'];
+function CounterController($scope)
 {
-    $scope.name = "William";
-    $scope.stateOfBeing = "taco";
-    
-    $scope.sayMessage = function()
+    $scope.onceCounter = 0;
+    $scope.counter = 0;
+
+    $scope.showNumberOfWatchers = function()
     {
-        var message = "William likes to eat all of the food.";
-        //var output = $filter('uppercase')(message);
-        return message;
+        console.log("# of Watchers: ", $scope.$$watchersCount);
     };
 
-    $scope.sayLovesMessage = function()
+    $scope.countOnce = function()
     {
-        var message = "William likes to eat all of the food.";
-        message = lovesFilter(message);
-        return message;
+       $scope.onceCounter++;
     };
 
-    $scope.feedMe = function()
+    $scope.upCounter = function()
     {
-        if ($scope.stateOfBeing == "taco")
-        {
-            $scope.stateOfBeing = "burger";
-        }
-        else
-        {
-            $scope.stateOfBeing = "taco";
-        }
-        
+        $scope.counter++;
     }
-}
 
-function LovesFilter()
-{
-    return function(input)
+    $scope.$watch('onceCounter', function (newValue, oldValue)
     {
-        input = input || "";
-        input = input.replace("likes", "loves");
-        return input;
-    };
-}
+        console.log("onceCounter old value: ", oldValue);
+        console.log("once counter new value: ", newValue);
+    });
 
-function TruthFilter()
-{
-    return function(input, target, replace)
+    $scope.$watch('counter', function(newValue, oldValue)
     {
-        input = input || "";
-        input = input.replace(target, replace);
-        return input;
-    };
+        console.log("counter oldValue: ", oldValue);
+        console.log("counter newValue: ", newValue);
+    });
 }
 
 })();

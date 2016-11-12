@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='MsgApp'>
+<html ng-app='CounterApp'>
     <head>
         <meta charset="utf-8">
         <script src="angular.js"></script>
@@ -7,20 +7,15 @@
         <style> body { font-size: 1.2em; }</style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/bootstrap.min.css">
-        <title>Customer Filters</title>
+        <title>ng-repeat</title>
     </head>
     <body>
-        <h1>Expressions and Interpolation</h1>
-        <div ng-controller='MsgController'>
-            {{name}} has a message for you: <br>
-            Original: {{sayMessage()}} <br>
-            Loves: {{sayLovesMessage()}} <br>
-            Truth: {{sayLovesMessage() | truth : 'food' : 'snacks' }} <br>
-            BIG TRUTH: {{sayLovesMessage() | truth : 'food' : 'snacks' | uppercase }}
+        <h1>The Digest Cycle</h1>
+        <div ng-controller='CounterController'>
+            <button ng-click="showNumberOfWatchers()">Log # of Watchers</button>
             <div>
-                <button ng-click="feedMe()">Feed Me</button>
-                <br>
-                <img ng-src="images/me_{{stateOfBeing}}.png">
+                <button ng-click="countOnce()">Up Once Counter (once)</button>
+                <button ng-click="upCounter()">Increment Counter</button>
             </div>
         </div>
     </body>
