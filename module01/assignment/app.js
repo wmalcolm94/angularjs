@@ -15,20 +15,20 @@ function LunchCheckController($scope)
 
     $scope.validateLunch = function()
     {
-        $scope.message = $scope.lunchItems.split(",").toString();
-        // var list = $scope.lunchItems.split(",");
-        // if (list.count == 0)
-        // {
-        //     $scope.message = "Please enter data first"; //list.toString() + maxItems.toString() + 
-        // }
-        // else if (list.count > maxItems)
-        // {
-        //     $scope.message = "Too much!"; //list.toString() + maxItems.toString() +  
-        // }
-        // else
-        // {
-        //     $scope.message = "Enjoy!"; //list.toString() + maxItems.toString() + 
-        // }
+        //console.log($scope.lunchItems);
+        var list = $scope.lunchItems.split(",");
+        if (list.length == 0 || $scope.lunchItems == "")
+        {
+            $scope.message = "Please enter data first"; //list.toString() + maxItems.toString() + 
+        }
+        else if (list.length > maxItems)
+        {
+            $scope.message = "Too much!"; //list.toString() + maxItems.toString() +  
+        }
+        else
+        {
+            $scope.message = "Enjoy!"; //list.toString() + maxItems.toString() + 
+        }
     }
 
 }
